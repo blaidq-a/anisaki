@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>Anisaki · Giriş</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0a0a0d;color:#f3f3f6;font:16px/1.5 system-ui,sans-serif}main{max-width:440px;padding:28px;text-align:center}p{color:#9b9ba8}a{color:#f3f3f6}</style>
+</head><body><main><h2 id="t">Anisaki'ye dönülüyor…</h2><p id="m"></p>
+<script>
+// Anisaki sign-in, step 2: AniList (token in the #fragment) or MyAnimeList (?code=) comes back here and the
+// sign-in goes on to the Anisaki that is waiting for it: on this device (127.0.0.1) or on the TV whose QR
+// code was scanned (its address on the home network, remembered by basla.html).
+const svc = location.hash.includes('access_token') || location.hash.includes('error') ? 'anilist' : 'mal'
+let to = '127.0.0.1'
+try {
+  const s = JSON.parse(localStorage.getItem('anisakiTo') || 'null')
+  if (s && Date.now() - s.at < 30 * 60 * 1000) to = s.to
+  localStorage.removeItem('anisakiTo')
+} catch (e) {}
+const ok = /^(127\.0\.0\.1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)$/.test(to)
+const target = 'http://' + to + ':43219/' + svc + '/callback' + location.search + location.hash
+history.replaceState(null, '', location.pathname)
+if (!ok || (!location.search && !location.hash)) {
+  document.getElementById('t').textContent = 'Giriş tamamlanmadı'
+  document.getElementById('m').textContent = 'Girişi Anisaki uygulamasından yeniden başlat.'
+} else {
+  document.getElementById('m').innerHTML = to === '127.0.0.1'
+    ? 'Sayfa açılmazsa Anisaki uygulamasını açık tutup girişi yeniden başlat.'
+    : 'Telefonun TV ile aynı Wi-Fi ağında olmalı.'
+  location.replace(target)
+}
+</script></main></body></html>
