@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>Anisaki · Giriş</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0a0a0d;color:#f3f3f6;font:16px/1.5 system-ui,sans-serif}main{max-width:420px;padding:28px;text-align:center}p{color:#9b9ba8}</style>
+</head><body><main><h2 id="t">Giriş sayfası açılıyor…</h2><p id="m"></p>
+<script>
+// Anisaki sign-in, step 1: remembers which device is waiting for the sign-in (this phone or computer
+// itself, or a TV on the same Wi-Fi whose QR code was scanned), then opens AniList's / MyAnimeList's own
+// sign-in page. Step 2 is giris.html. Nothing is sent anywhere else.
+const q = new URLSearchParams(location.search)
+const to = q.get('to') || '127.0.0.1'
+const go = q.get('go') || ''
+const privateIp = /^(127\.0\.0\.1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)$/.test(to)
+const auth = /^https:\/\/(anilist\.co\/api\/v2\/oauth\/authorize|myanimelist\.net\/v1\/oauth2\/authorize)\?/.test(go)
+if (!privateIp || !auth) {
+  document.getElementById('t').textContent = 'Geçersiz giriş bağlantısı'
+  document.getElementById('m').textContent = 'Girişi Anisaki uygulamasından yeniden başlat.'
+} else {
+  try { localStorage.setItem('anisakiTo', JSON.stringify({ to, at: Date.now() })) } catch (e) {}
+  location.replace(go)
+}
+</script></main></body></html>

@@ -1,0 +1,65 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Anisaki",
+  "version": "0.1.1",
+  "identifier": "app.anisaki",
+  "build": {
+    "frontendDist": "../dist-web",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run web:dev",
+    "beforeBuildCommand": "npm run web:build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Anisaki",
+        "width": 1360,
+        "height": 860,
+        "minWidth": 900,
+        "minHeight": 600,
+        "decorations": false,
+        "backgroundColor": "#09090c",
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": {
+      "../vendor/mpv/libmpv-2.dll": "mpv/libmpv-2.dll",
+      "../vendor/anime4k/": "anime4k/",
+      "../vendor/toz-anime/": "toz-anime/",
+      "../vendor/ffmpeg/ffmpeg.exe": "ffmpeg/ffmpeg.exe",
+      "../vendor/ffmpeg/LICENSE.txt": "ffmpeg/LICENSE.txt"
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "headerImage": "../build/installer/header.bmp",
+        "sidebarImage": "../build/installer/sidebar.bmp",
+        "installerIcon": "icons/icon.ico",
+        "languages": [
+          "Turkish",
+          "English"
+        ]
+      }
+    },
+    "publisher": "Anisaki",
+    "shortDescription": "Anime izleme uygulaması",
+    "category": "Entertainment"
+  }
+}

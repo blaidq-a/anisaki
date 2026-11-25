@@ -1,0 +1,35 @@
+{
+  "$schema": "../../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Anisaki",
+  "version": "0.1.1",
+  "identifier": "app.anisaki.mobile",
+  "build": {
+    "frontendDist": "../dist",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Anisaki",
+        "backgroundColor": "#09090c"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "publisher": "Anisaki",
+    "shortDescription": "Anime izleme uygulaması",
+    "category": "Entertainment"
+  }
+}

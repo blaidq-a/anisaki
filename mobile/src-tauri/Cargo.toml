@@ -1,0 +1,42 @@
+[package]
+name = "anisaki-mobile"
+version = "0.1.1"
+description = "Anisaki for phones and TVs"
+edition = "2024"
+rust-version = "1.90"
+
+# The phone / TV app (Android). Same UI as the desktop app (src/renderer) and the same Rust parts where they
+# make sense on a phone: straight torrent streaming (librqbit), subtitle files, the AniList / MAL sign-in
+# callback. Video plays in ExoPlayer (PlayerPlugin.kt), so there is no mpv / Anime4K here.
+[lib]
+name = "anisaki_mobile_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7.6", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.12.7", features = [] }
+tauri-plugin-http = "2"
+tauri-plugin-opener = "2"
+url = "2"
+regex = "1"
+# rustls on the phone (no OpenSSL to cross-compile)
+librqbit = { version = "9.1", default-features = false, features = ["rust-tls"] }
+# Töz: ONNX Runtime loaded at run time from the APK (Microsoft's onnxruntime-android package)
+ort = { version = "=2.0.0-rc.10", default-features = false, features = ["std", "load-dynamic"] }
+unicode-normalization = "0.1"
+tokio = { version = "1", features = ["net", "io-util", "sync", "time", "rt", "macros", "fs"] }
+
+[target.'cfg(target_os = "android")'.dependencies]
+# the player (Java) calls Töz directly for live subtitle translation
+jni = "0.21"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
