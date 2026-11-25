@@ -15,9 +15,10 @@ try {
   localStorage.removeItem('anisakiTo')
 } catch (e) {}
 const ok = /^(127\.0\.0\.1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)$/.test(to)
-const target = 'http://' + to + ':43219/' + svc + '/callback' + location.search + location.hash
+const back = location.search + location.hash
+const target = 'http://' + to + ':43219/' + svc + '/callback' + back
 history.replaceState(null, '', location.pathname)
-if (!ok || (!location.search && !location.hash)) {
+if (!ok || !back) {
   document.getElementById('t').textContent = 'Giriş tamamlanmadı'
   document.getElementById('m').textContent = 'Girişi Anisaki uygulamasından yeniden başlat.'
 } else {
