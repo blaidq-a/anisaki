@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "node",
+      "@webgpu/types"
+    ],
+    "paths": {
+      "electron": [
+        "./src/renderer/src/desktop/shims/electron.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "vite.web.config.ts"
+  ],
+  "exclude": [
+    "mobile"
+  ]
+}

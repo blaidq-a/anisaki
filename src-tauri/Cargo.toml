@@ -1,0 +1,50 @@
+[package]
+name = "anisaki"
+version = "0.1.1"
+description = "Anisaki"
+authors = []
+license = ""
+repository = ""
+edition = "2024"
+rust-version = "1.90"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "anisaki_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7.6", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.12.7", features = [] }
+tauri-plugin-log = "2"
+tauri-plugin-http = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+libloading = "0.8"
+aes-gcm = "0.10"
+base64 = "0.22"
+ort = "=2.0.0-rc.10"
+unicode-normalization = "0.1"
+url = "2"
+regex = "1"
+librqbit = { version = "9.1", default-features = false, features = ["default-tls"] }
+tokio = { version = "1", features = ["net", "io-util", "process", "sync", "time", "rt", "macros"] }
+# one-click update: the new installer is downloaded by the app itself (update.rs)
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "http2"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62", features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging", "Win32_Graphics_Gdi", "Win32_Graphics_Dwm", "Win32_System_LibraryLoader", "Win32_UI_Input_KeyboardAndMouse", "Win32_Security_Cryptography"] }
+
+# Dev builds: our own code optimised (Töz's beam search and tokenizer run in Rust and were ~10x slower
+# unoptimised); dependencies stay at the default so they don't all rebuild.
+[profile.dev]
+opt-level = 2
+
+[profile.dev.package."*"]
+opt-level = 0

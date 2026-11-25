@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="tr" class="mobile">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- only the app's own scripts run; frames only for YouTube trailers; no plugins / objects -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' ipc: http://ipc.localhost; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; base-uri 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src * data: blob:; media-src * blob:; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src * ipc: http://ipc.localhost" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@700;900&display=swap" />
+    <title>Anisaki</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+  </body>
+</html>

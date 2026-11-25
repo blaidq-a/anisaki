@@ -1,0 +1,253 @@
+/* Phone layout on top of the desktop styles: one column, compact top bar, safe areas, touch sizes. */
+html.mobile body { -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+html.mobile .winctl, html.mobile .drag-space, html.mobile .navarrows .iconbtn + .iconbtn { display: none; }
+html.mobile .topbar { height: auto; flex-wrap: wrap; gap: 8px; padding: calc(env(safe-area-inset-top) + 8px) 12px 8px; -webkit-app-region: none; }
+html.mobile .logo span:last-child { display: none; }
+html.mobile .topnav { order: 3; width: 100%; justify-content: space-between; }
+html.mobile .topnav button { flex: 1; justify-content: center; padding: 8px 6px; font-size: .8rem; }
+html.mobile .searchbox { flex: 1; width: auto; min-width: 0; }
+html.mobile .content { padding-bottom: env(safe-area-inset-bottom); }
+
+/* home */
+html.mobile .hero2 { margin: 10px 12px 0; height: 420px; min-height: 0; border-radius: 18px; }
+html.mobile .hero2-native { display: none; }
+html.mobile .hero2-body { left: 16px; right: 16px; bottom: 44px; max-width: none; gap: 10px; }
+html.mobile .hero2 h1 { font-size: 1.8rem; }
+html.mobile .hero2 p { -webkit-line-clamp: 2; font-size: .9rem; }
+html.mobile .hero2-nav { display: none; }
+html.mobile .hero2-dots { left: 16px; bottom: 20px; }
+html.mobile .home-body { grid-template-columns: minmax(0, 1fr); padding: 20px 12px 40px; gap: 28px; }
+html.mobile .trend { position: static; }
+html.mobile .cw { grid-auto-columns: 78%; }
+html.mobile .strip { grid-auto-columns: 128px; gap: 12px; }
+html.mobile .grid, html.mobile .grid2 { grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 18px 10px; }
+html.mobile .card h3 { font-size: .82rem; }
+html.mobile .addlist { opacity: 1; transform: none; width: 28px; height: 28px; }
+html.mobile .dragarrow { display: none; }
+html.mobile .block-head h2 { font-size: 1.15rem; }
+
+/* anime page */
+html.mobile .dhero { height: 220px; }
+html.mobile .detail-body { margin-top: -120px; padding: 0 14px 40px; gap: 28px; }
+/* cover + title / stats side by side, everything else full width below */
+html.mobile .detail-top { grid-template-columns: 112px minmax(0, 1fr); gap: 10px 14px; align-items: end; }
+html.mobile .detail-info { display: contents; }
+html.mobile .detail-cover { grid-column: 1; grid-row: 1 / span 3; align-self: start; }
+html.mobile .detail-info > h1, html.mobile .detail-info > .jp, html.mobile .detail-info > .dstats { grid-column: 2; }
+html.mobile .detail-info > h1 { font-size: 1.3rem; align-self: end; margin-top: 60px; }
+html.mobile .detail-info > .jp { margin: 0; font-size: .8rem; }
+html.mobile .detail-info > .dtags, html.mobile .detail-info > .synwrap, html.mobile .detail-info > .dactions { grid-column: 1 / -1; }
+html.mobile .dactions .btn { flex: 1; justify-content: center; }
+html.mobile .dstats { gap: 6px; }
+html.mobile .episodes { grid-template-columns: minmax(0, 1fr); }
+html.mobile .ep { grid-template-columns: 110px minmax(0, 1fr); }
+
+/* discover, settings, dialogs, source list */
+html.mobile .discover { grid-template-columns: minmax(0, 1fr); padding: 16px 12px 40px; gap: 16px; }
+html.mobile .filters { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html.mobile .filters .searchbox, html.mobile .filters .fchip, html.mobile .filters .btn { grid-column: 1 / -1; }
+html.mobile .settings { grid-template-columns: minmax(0, 1fr); padding: 16px 12px 40px; gap: 14px; }
+html.mobile .settings-nav { position: static; display: flex; overflow-x: auto; gap: 6px; scrollbar-width: none; }
+html.mobile .settings-nav h1 { display: none; }
+html.mobile .settings-nav button { flex: none; padding: 8px 12px; }
+html.mobile .settings-nav button small { display: none; }
+html.mobile .panel { padding: 16px; }
+html.mobile .langpair { grid-template-columns: minmax(0, 1fr); }
+html.mobile .modal-back { padding: 10px; align-items: end; }
+html.mobile .statuspick { grid-template-columns: repeat(3, 1fr); }
+html.mobile .field2.two { grid-template-columns: minmax(0, 1fr); }
+html.mobile .scorepick { grid-template-columns: repeat(5, 1fr); }
+html.mobile .sheet { top: 0; width: 100%; padding-top: calc(env(safe-area-inset-top) + 14px); }
+html.mobile .autopill { left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom) + 12px); max-width: none; }
+html.mobile .ctxmenu { min-width: 200px; }
+
+/* opening screen while the source is found */
+.m-opening { position: fixed; inset: 0; z-index: 400; background: #000 center / cover no-repeat; display: grid; place-items: center; color: #fff; }
+.m-opening-shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,.4), rgba(0,0,0,.88) 75%); }
+.m-opening-x { position: absolute; top: calc(env(safe-area-inset-top) + 14px); right: 14px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.4); color: #fff; font-size: 1rem; z-index: 1; }
+.m-opening-mid { position: relative; display: grid; justify-items: center; gap: 8px; text-align: center; padding: 24px; }
+.m-opening-mid h1 { margin: 0; font: 800 1.9rem/1.05 var(--display); text-transform: uppercase; letter-spacing: -.02em; }
+.m-opening-mid p { margin: 0; color: rgba(255,255,255,.75); font-weight: 600; }
+.m-opening-st { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-weight: 600; }
+html.mobile .addon { grid-template-columns: 44px minmax(0, 1fr); }
+html.mobile .addon-actions { grid-column: 1 / -1; justify-content: flex-start; }
+html.mobile .addon-url { word-break: break-all; }
+html.mobile .dhero { height: 260px; }
+html.mobile .dhero-fade { backdrop-filter: none; background: linear-gradient(180deg, rgba(10,10,13,.2) 0%, rgba(10,10,13,.8) 60%, var(--bg) 99%); }
+html.mobile .settings-nav::-webkit-scrollbar { display: none; }
+html.mobile .profile { grid-template-columns: 44px minmax(0, 1fr); }
+html.mobile .pactions { grid-column: 1 / -1; justify-content: flex-start; }
+html.mobile .addrow .btn { flex: 1; justify-content: center; }
+
+/* TV (Android TV, remote control): the desktop layout, not the phone one (main.tsx drops "mobile"), drawn
+   at two thirds so a 1080p TV (a 960-wide page at its pixel density) gets the room of a 1440-wide window.
+   No window buttons or keyboard hints, a fixed-height banner, a clear frame on whatever has the focus. */
+html.tv { zoom: .67; }
+html.tv .winctl, html.tv .kbd { display: none !important; }
+html.tv .topbar { padding-right: 28px; }
+html.tv .hero3 { height: 640px; }
+html.tv .hero3-body { bottom: 120px; }
+html.tv .hero3 h1 { font-size: 3.4rem; }
+/* Focus on a TV, like a streaming app: buttons and chips fill with the text colour (white on dark themes,
+   dark on the light ones, so it shows on every theme); cards and pictures grow a little with a frame. */
+html.tv :focus { outline: 3px solid var(--ink) !important; outline-offset: 3px; }
+/* the focus frame is always round-cornered (square settings rows and options got a sharp box) */
+html.tv :focus:not(.circ, .pill, .pill-play, .pmenu-btn, .iconbtn, .searchbox, .whopick-p, .card, .cw-card) { border-radius: 14px; }
+html.tv :is(.topnav button, .pill, .tchip, .seg button, .chips button, .btn, .iconbtn, .pmenu-item, .pmenu-btn, .circ, .pill-play, .settings-nav button, .cal-days button, .tabs button, .searchbox):focus {
+  outline: none !important; background: var(--ink) !important; color: var(--bg) !important; border-color: var(--ink) !important; box-shadow: 0 0 0 4px color-mix(in srgb, var(--ink) 25%, transparent);
+}
+html.tv :is(.topnav button, .settings-nav button, .cal-days button):focus * { color: inherit !important; }
+/* TV cards: the frame follows the rounded picture (an outline on the card itself was a square around
+   rounded corners); no zoom, which repainted big pictures on every move and made scrolling stutter */
+html.tv :is(.card, .cw-card, .ep2):focus { outline: none !important; }
+html.tv .card:focus .poster, html.tv .cw-card:focus .cw-img, html.tv .ep2:focus .ep2-thumb { box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--ink) !important; }
+html.tv :is(.card .poster, .cw-img, .ep2-thumb) { transition: none; }
+html.tv .card:not(:focus) .poster, html.tv .cw-card:not(:focus) .cw-img, html.tv .ep2:not(:focus) .ep2-thumb { box-shadow: none !important; }
+html.tv :is(.card .poster, .cw-card .cw-img) { transform: none !important; }
+/* rows that scroll sideways cut the frame of the card in focus: room above and below it */
+html.tv :is(.strip, .cw, .dragrow, .hscroll) { padding-block: 14px !important; margin-block: -14px !important; scroll-padding-inline: 48px; }
+/* less to click through: no back / forward arrows, bell or settings icon in the header (Back is on the
+   remote; settings are in the profile menu), no "Tümü →" links, no logo stop */
+html.tv .navarrows, html.tv .iconbtn[aria-label="Ayarlar"], html.tv .iconbtn.bell, html.tv .block-head .link { display: none !important; }
+html.tv .circ.sm[aria-label="Geri"] { display: none; }
+/* the search is a round button next to the menu: OK opens the box and the keyboard */
+html.tv .topbar .searchbox { order: 3; width: 44px; height: 40px; border-radius: 999px; background: rgba(var(--w), .06); transition: width .2s; justify-content: center; }
+html.tv .topbar .searchbox svg { position: static; color: var(--muted); }
+html.tv .topbar .searchbox input { position: absolute; inset: 0; opacity: 0; width: 100%; padding-left: 40px; }
+html.tv .topbar .searchbox:focus-within, html.tv .topbar .searchbox:has(input:not(:placeholder-shown)) { width: 360px; justify-content: flex-start; }
+html.tv .topbar .searchbox:focus-within svg, html.tv .topbar .searchbox:has(input:not(:placeholder-shown)) svg { position: absolute; left: 14px; }
+html.tv .topbar .searchbox:focus-within input, html.tv .topbar .searchbox:has(input:not(:placeholder-shown)) input { opacity: 1; position: static; }
+html.tv .topbar .searchbox:focus svg { color: var(--bg); }
+html.tv .topbar .logo { order: 1; }
+html.tv .topbar .topnav { order: 2; }
+html.tv .topbar .drag-space { order: 4; }
+html.tv .topbar .pmenu { order: 5; }
+
+/* edge-to-edge on Android: keep the top bar under the status bar, no keyboard hints, tabs on one line */
+html.mobile .topbar { padding-top: max(env(safe-area-inset-top), 34px); }
+html.mobile .searchbox .kbd { display: none; }
+html.mobile .topnav button { white-space: nowrap; }
+html.mobile .content { padding-bottom: max(env(safe-area-inset-bottom), 16px); }
+
+/* episode list: one column, picture and text side by side (the desktop grid was wider than the screen) */
+html.mobile .episodes2 { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+html.mobile .ep2 { grid-template-columns: 46% minmax(0, 1fr); gap: 10px; }
+html.mobile .ep2-text strong { font-size: .88rem; }
+html.mobile .ep2-text p { -webkit-line-clamp: 3; font-size: .78rem; }
+
+/* calendar: days scroll sideways, one show per row */
+html.mobile .cal-days { display: flex; overflow-x: auto; scrollbar-width: none; }
+html.mobile .cal-days::-webkit-scrollbar { display: none; }
+html.mobile .cal-days button { flex: none; min-width: 76px; }
+html.mobile .cal-hour { grid-template-columns: 50px minmax(0, 1fr); gap: 8px; }
+html.mobile .cal-items { grid-template-columns: minmax(0, 1fr); }
+html.mobile .cal-head { flex-wrap: wrap; }
+html.mobile .cal-days button { padding: 12px 22px 10px 12px; }
+html.mobile .cal-count { top: 4px; right: 6px; font-size: .62rem; }
+/* no desktop scrollbars on a phone (the vertical one also pushed the page 8px sideways) */
+html.mobile .content { overflow-x: hidden; scrollbar-width: none; }
+html.mobile .content::-webkit-scrollbar { display: none; }
+/* a long press opens the menu, it should not select the text under the finger */
+html.mobile button, html.mobile .card, html.mobile .ep2, html.mobile .cw-card { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+
+/* anime page: the main part (title, play, episodes) first; cover and facts as a compact strip after it */
+html.mobile .d2-wrap { display: flex !important; flex-direction: column; gap: 18px; padding: 12px 14px 40px !important; }
+html.mobile .d2-main { order: 1; padding-top: 8px; }
+html.mobile .d2-side { order: 2; }
+html.mobile .d2-side > .circ.sm { display: none; } /* the top bar already has a back arrow */
+html.mobile .d2-cover { width: 120px; align-self: flex-start; }
+html.mobile .d2-main h1 { font-size: 1.9rem; }
+html.mobile .d2-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html.mobile .d2-wrap { padding-top: 130px !important; }
+html.mobile .hero3-btns { flex-wrap: wrap; gap: 10px; }
+html.mobile .hero3-btns .pill-play { white-space: nowrap; flex: 1 1 100%; justify-content: center; }
+
+/* home hero (the new design): content below the top bar, text sized for a phone, arrows out of the way */
+html.mobile .hero3 { height: auto; min-height: 560px; }
+html.mobile .hero3-body { position: relative; left: 0; bottom: auto; max-width: none; padding: 140px 16px 84px; gap: 12px; }
+html.mobile .hero3 h1 { font-size: 2rem; }
+html.mobile .hero3 p { -webkit-line-clamp: 2; font-size: .9rem; }
+html.mobile .hero3-btns { flex-wrap: wrap; }
+html.mobile .hero3-nav { right: 16px; bottom: 22px; gap: 8px; }
+html.mobile .hero3-nav button { width: 42px; height: 42px; }
+/* the hero's arrows ran into the next section's title: on a phone the slides change by themselves */
+html.mobile .hero3-nav { display: none; }
+html.mobile .hero3-body { padding-bottom: 56px; }
+/* the card rule above made the hero's "+" smaller than its neighbour */
+html.mobile .circ-wrap .addlist { width: 54px; height: 54px; opacity: 1; transform: none; }
+
+/* trailers: in the middle of the screen (the bottom-sheet rule for dialogs put them at the very bottom) */
+html.mobile .modal-back:has(.dialog.trailer) { align-items: center; padding: 0; background: rgba(0,0,0,.92); }
+html.mobile .dialog.trailer { width: 100%; border-radius: 0; }
+html.tv ::-webkit-scrollbar { display: none; }
+/* the AniList / MyAnimeList page buttons open a web browser, which a TV does not have */
+html.tv .circ.al { display: none; }
+
+/* Smoothness on phones and TVs. Live blur (backdrop-filter) is redrawn for every frame of a scroll, and every
+   anime card had two blurred badges on it (score, +) besides the bar, menus and dialogs: the page stuttered.
+   Plain see-through backgrounds instead (they look nearly the same over the darkened pictures). The banner's
+   slow zoom (a 10 s transform on a full-screen picture) and the blurred loading backdrop go too. */
+html.mobile *, html.mobile *::before, html.mobile *::after,
+html.tv *, html.tv *::before, html.tv *::after { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+:is(html.mobile, html.tv) .shell.over.scrolled .topbar { background: rgba(8, 8, 11, .97); }
+:is(html.mobile, html.tv) .score, :is(html.mobile, html.tv) .addlist { background: rgba(10, 10, 14, .82); }
+:is(html.mobile, html.tv) .modal-back { background: rgba(0, 0, 0, .82); }
+:is(html.mobile, html.tv) .ctxmenu, :is(html.mobile, html.tv) .pmenu-pop { background: var(--surface-2); }
+:is(html.mobile, html.tv) .pill, :is(html.mobile, html.tv) .circ, :is(html.mobile, html.tv) .circ-wrap .addlist { background: rgba(18, 18, 24, .88); color: #f3f3f6; border-color: rgba(255, 255, 255, .16); }
+/* they sit on pictures: light text on every theme (the light themes made them dark on dark) */
+:is(html.mobile, html.tv) .pill svg { color: inherit; }
+:is(html.mobile, html.tv) .hero3-bg { transform: none !important; transition: opacity .8s ease; }
+:is(html.mobile, html.tv) .opening-bg { filter: none; }
+/* rows further down the page are laid out and drawn only when they come near the screen */
+/* (phone only: on a TV the remote must find the buttons in rows not drawn yet) */
+html.mobile .content section:not(.hero3) { content-visibility: auto; contain-intrinsic-size: auto 420px; }
+/* TV: the "no AniList account" note sits at the top of the page instead of floating over the bottom row,
+   so the remote reaches it (Up from the banner's Play) */
+html.tv .acct-warn { position: relative; left: auto; bottom: auto; translate: none; z-index: 5; margin: calc(var(--top) + 12px) auto 0; width: min(1100px, calc(100% - 96px)); box-shadow: none; }
+html.tv .acct-warn + * { margin-top: 0; }
+/* TV: the banner turns by itself; its arrow buttons only got in the remote's way */
+html.tv .hero3-nav { display: none; }
+/* phone: the "no account" note is a slim strip, not a box over half the screen */
+html.mobile .acct-warn { padding: 10px 12px; gap: 8px 10px; bottom: calc(env(safe-area-inset-bottom) + 12px); }
+html.mobile .acct-warn > span { flex-basis: calc(100% - 30px); min-width: 0; font-size: .76rem; line-height: 1.35; }
+html.mobile .acct-warn .btn { padding: 6px 11px; font-size: .76rem; }
+
+/* Pickers for lists and the "exit?" question (phone and TV): a centred panel of big choices */
+.tvpick { position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.72); display: grid; place-items: center; padding: 24px; animation: rise .2s ease-out; }
+.tvpick-panel { width: min(460px, 100%); max-height: 80vh; display: flex; flex-direction: column; gap: 14px; background: var(--surface); border: 1px solid var(--line-2); border-radius: 20px; padding: 22px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
+.tvpick-panel h3 { margin: 0 4px; font: 800 1.15rem var(--display); color: var(--ink); }
+.tvpick-list { display: grid; gap: 6px; overflow-y: auto; padding: 4px; }
+.tvpick-list button, .exitask-row button { text-align: left; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); font: 600 .98rem var(--body); }
+.tvpick-list button[aria-selected='true'] { border-color: var(--ink); }
+.tvpick-list button[aria-selected='true']::after { content: ' ✓'; }
+.exitask-row { display: flex; gap: 10px; justify-content: flex-end; }
+.exitask-row button { text-align: center; min-width: 110px; }
+.exitask-row button[data-a='yes'] { background: var(--ink); color: var(--bg); }
+html.tv .tvpick-list button:focus, html.tv .exitask-row button:focus { outline: none !important; background: var(--ink) !important; color: var(--bg) !important; }
+/* phone: no settings icon in the top bar (the profile menu has it), more room for search */
+html.mobile .topbar .iconbtn[aria-label="Ayarlar"] { display: none; }
+/* phone: the next-episode countdown right under the title area, not at the very bottom of the page */
+html.mobile .d2-side { display: contents; }
+html.mobile .d2-side > * { order: 3; }
+html.mobile .d2-side > .countdown { order: 0; margin-top: 4px; }
+html.mobile .d2-main { order: 1; }
+html.mobile .d2-wrap > .countdown + .d2-main, html.mobile .d2-main { padding-top: 0; }
+/* phone: nothing may push the page sideways (the home screen slid right and left a gap at the edge) */
+html.mobile, html.mobile body { overflow-x: clip; max-width: 100vw; overscroll-behavior-x: none; }
+html.mobile .app, html.mobile .content { max-width: 100vw; }
+/* phone: the banner keeps only score, year and episodes in one small row (genre and format chips filled
+   half the screen) */
+html.mobile .hero3 .pills { flex-wrap: nowrap; gap: 6px; overflow: hidden; }
+html.mobile .hero3 .pills button.pill { display: none; }
+html.mobile .hero3 .pills .pill { padding: 4px 10px; font-size: .8rem; min-height: 0; }
+/* phone: the countdown is one slim line under the title, not a big box over the picture */
+html.mobile .countdown { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; width: fit-content; max-width: 100%; padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); box-shadow: none; }
+html.mobile .countdown .cd-when { display: none; }
+html.mobile .countdown small { font-size: .74rem; }
+html.mobile .countdown .cd-row { display: flex; gap: 6px; }
+html.mobile .countdown .cd-row span { display: inline-flex; align-items: baseline; gap: 2px; padding: 0; background: none; min-width: 0; }
+html.mobile .countdown .cd-row b { font-size: .86rem; }
+html.mobile .countdown .cd-row i { font-size: .66rem; }
+/* TV sign-in QR code */
+.loginqr .dialog { padding: 28px; display: grid; justify-items: center; gap: 14px; text-align: center; max-width: 520px; }
+.loginqr svg { border-radius: 12px; }

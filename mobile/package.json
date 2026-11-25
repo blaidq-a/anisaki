@@ -1,0 +1,11 @@
+{
+  "name": "anisaki-mobile",
+  "private": true,
+  "version": "0.1.1",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "tauri": "tauri",
+    "apk": "tauri android build --apk --target aarch64 --target armv7"
+  }
+}

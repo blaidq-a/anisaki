@@ -1,0 +1,25 @@
+node_modules/
+out/
+dist/
+*.log
+vendor/
+src/main/embedded.gen.ts
+Dagitim/
+src/main/embedded*.gen.ts
+dist-web/
+src-tauri/target/
+src-tauri/gen/
+.env
+.env.*
+src/renderer/src/desktop/*.gen.ts
+
+# phone app (Tauri Android)
+mobile/keystore/
+*.jks
+keystore.properties
+mobile/src-tauri/target/
+mobile/src-tauri/gen/android/app/build/
+mobile/src-tauri/gen/android/.gradle/
+mobile/src-tauri/gen/android/buildSrc/build/
+mobile/src-tauri/gen/schemas/
+mobile/dist/
